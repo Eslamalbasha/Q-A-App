@@ -5,12 +5,12 @@ const QAList = ({ data }) => {
     <Row>
       <Accordion defaultActiveKey="0">
         {data.length >= 1 ? (
-          data.map((item) => {
+          data.map((item, index) => {
             return (
               <Accordion.Item key={index} eventKey={item.id}>
                 <Accordion.Header>{item.q}</Accordion.Header>
                 <Accordion.Body className="text-start">
-                  <div className="px-3 d-inline ">Answer</div>
+                  <div className="px-3 d-inline ">{item.a}</div>
                   <button className="btn-color">Delete</button>
                 </Accordion.Body>
               </Accordion.Item>

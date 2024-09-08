@@ -1,6 +1,9 @@
 import { Row, Form, Col } from "react-bootstrap";
 
-const FormInput = () => {
+const FormInput = ({ onAdd }) => {
+  const addNewItem = () => {
+    onAdd();
+  };
   return (
     <Row>
       <Row className="mb-3">
@@ -11,7 +14,11 @@ const FormInput = () => {
           <Form.Control type="password" placeholder="Password" />
         </Col>
         <Col sm="2">
-          <button className="btn-color w-100" type="submit">
+          <button
+            onClick={addNewItem}
+            className="btn-color w-100"
+            type="submit"
+          >
             Submit
           </button>
         </Col>
