@@ -6,7 +6,16 @@ import { useState } from "react";
 
 function App() {
   const [data, setData] = useState(question);
-  const addItem = () => {};
+  const addItem = () => {
+    setData([...question]);
+  };
+  const deletAllItem = () => {
+    question.splice(0, question.length);
+    setData([]);
+  };
+  const deletOneItem = (items) => {
+    setData([...items]);
+  };
   return (
     <div className="font text-center color-body">
       <Container className="p-5">
@@ -16,9 +25,11 @@ function App() {
           </Col>
           <Col sm="8">
             <FormInput onAdd={addItem} />
-            <QAList data={data} />
+            <QAList data={data} deletOneItem={deletOneItem} />
             {data.length >= 1 ? (
-              <button className="btn-color w-100 my-3 ">Delete All</button>
+              <button onClick={deletAllItem} className="btn-color w-100 my-3 ">
+                Delete All
+              </button>
             ) : null}
           </Col>
         </Row>

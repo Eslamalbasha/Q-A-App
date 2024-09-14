@@ -1,17 +1,34 @@
+import { useState } from "react";
 import { Row, Form, Col } from "react-bootstrap";
+import { question } from "../Data";
 
 const FormInput = ({ onAdd }) => {
+  const [qu, setQu] = useState("");
+  const [an, setAn] = useState("");
   const addNewItem = () => {
+    question.push({ id: Math.random(), q: qu, a: an });
+    setQu("");
+    setAn("");
     onAdd();
   };
   return (
     <Row>
       <Row className="mb-3">
         <Col sm="5">
-          <Form.Control type="email" placeholder="Enter email" />
+          <Form.Control
+            value={qu}
+            onChange={(e) => setQu(e.target.value)}
+            type="text"
+            placeholder="Enter Qustion"
+          />
         </Col>
         <Col sm="5">
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control
+            value={an}
+            onChange={(e) => setAn(e.target.value)}
+            type="text"
+            placeholder="Enter Answer"
+          />
         </Col>
         <Col sm="2">
           <button
